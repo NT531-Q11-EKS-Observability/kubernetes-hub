@@ -1,4 +1,4 @@
-# Spring PetClinic Microservices - Minikube Deployment
+# Spring PetClinic Microservices - Kubernetes Deployment
 
 This repository contains the Kubernetes manifests for deploying the **Spring PetClinic Microservices** architecture on **Minikube**.  
 It includes services such as `api-gateway`, `config-server`, `discovery-server`, `admin-server`, and multiple business microservices.
