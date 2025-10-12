@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: petclinic
+
+commonLabels:
+  app.kubernetes.io/part-of: petclinic
+  app.kubernetes.io/managed-by: kustomize
+
+resources:
+  - ../../base
+
+patchesStrategicMerge:
+  - set-profile-docker.yaml           # Cấu hình profile runtime
+  - delay-startup-patch.yaml          # Giúp các service chờ config server
+  - disable-probes-patch.yaml         # Tắt healthcheck lúc khởi động
+  - config-server-probe-fix.yaml      # Fix readiness của config server
+  - init-wait-config.yaml             # Init container chờ config server sẵn sàng
+  - enable-admin-client.yaml          # Bật admin client cơ bản
+  - init-wait-admin.yaml              # Chờ admin server online trước khi start app
+  - mount-admin-config.yaml           # Mount configmap/secret cho admin client
+  - prefer-ip.yaml                    # Sử dụng IP thật khi đăng ký (fix offline)

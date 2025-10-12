@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-server
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      containers:
+        - name: config-server
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8888
+            initialDelaySeconds: 40       # Wait until Spring Boot finishes loading the Git repository
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8888
+            initialDelaySeconds: 90        # Extra delay to prevent premature restarts during startup
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 5

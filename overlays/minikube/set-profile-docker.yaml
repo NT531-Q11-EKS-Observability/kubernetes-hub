@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      containers:
+        - name: api-gateway
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "docker"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-server
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      containers:
+        - name: config-server
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "docker"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discovery-server
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      containers:
+        - name: discovery-server
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "docker"

@@ -1,0 +1,103 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      containers:
+        - name: api-gateway
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL
+              value: "http://$(POD_IP):8080"
+            - name: SPRING_BOOT_ADMIN_CLIENT_INSTANCE_MANAGEMENT-BASE-URL
+              value: "http://$(POD_IP):8080/actuator"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customers-service
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      containers:
+        - name: customers-service
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL
+              value: "http://$(POD_IP):8081"
+            - name: SPRING_BOOT_ADMIN_CLIENT_INSTANCE_MANAGEMENT-BASE-URL
+              value: "http://$(POD_IP):8081/actuator"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visits-service
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      containers:
+        - name: visits-service
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL
+              value: "http://$(POD_IP):8082"
+            - name: SPRING_BOOT_ADMIN_CLIENT_INSTANCE_MANAGEMENT-BASE-URL
+              value: "http://$(POD_IP):8082/actuator"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vets-service
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      containers:
+        - name: vets-service
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL
+              value: "http://$(POD_IP):8083"
+            - name: SPRING_BOOT_ADMIN_CLIENT_INSTANCE_MANAGEMENT-BASE-URL
+              value: "http://$(POD_IP):8083/actuator"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: genai-service
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      containers:
+        - name: genai-service
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL
+              value: "http://$(POD_IP):8084"
+            - name: SPRING_BOOT_ADMIN_CLIENT_INSTANCE_MANAGEMENT-BASE-URL
+              value: "http://$(POD_IP):8084/actuator"

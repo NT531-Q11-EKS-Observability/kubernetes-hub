@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+spec:
+  template:
+    spec:
+      containers:
+        - name: api-gateway
+          readinessProbe:
+            initialDelaySeconds: 40
+          livenessProbe:
+            initialDelaySeconds: 60
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customers-service
+spec:
+  template:
+    spec:
+      containers:
+        - name: customers-service
+          readinessProbe:
+            initialDelaySeconds: 40
+          livenessProbe:
+            initialDelaySeconds: 60
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visits-service
+spec:
+  template:
+    spec:
+      containers:
+        - name: visits-service
+          readinessProbe:
+            initialDelaySeconds: 40
+          livenessProbe:
+            initialDelaySeconds: 60
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vets-service
+spec:
+  template:
+    spec:
+      containers:
+        - name: vets-service
+          readinessProbe:
+            initialDelaySeconds: 40
+          livenessProbe:
+            initialDelaySeconds: 60
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: genai-service
+spec:
+  template:
+    spec:
+      containers:
+        - name: genai-service
+          readinessProbe:
+            initialDelaySeconds: 40
+          livenessProbe:
+            initialDelaySeconds: 60

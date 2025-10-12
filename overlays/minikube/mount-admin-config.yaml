@@ -1,0 +1,98 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      volumes:
+        - name: boot-admin-client-config
+          configMap:
+            name: boot-admin-client-config
+      containers:
+        - name: api-gateway
+          volumeMounts:
+            - name: boot-admin-client-config
+              mountPath: /config
+              readOnly: true
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customers-service
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      volumes:
+        - name: boot-admin-client-config
+          configMap:
+            name: boot-admin-client-config
+      containers:
+        - name: customers-service
+          volumeMounts:
+            - name: boot-admin-client-config
+              mountPath: /config
+              readOnly: true
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visits-service
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      volumes:
+        - name: boot-admin-client-config
+          configMap:
+            name: boot-admin-client-config
+      containers:
+        - name: visits-service
+          volumeMounts:
+            - name: boot-admin-client-config
+              mountPath: /config
+              readOnly: true
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vets-service
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      volumes:
+        - name: boot-admin-client-config
+          configMap:
+            name: boot-admin-client-config
+      containers:
+        - name: vets-service
+          volumeMounts:
+            - name: boot-admin-client-config
+              mountPath: /config
+              readOnly: true
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: genai-service
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      volumes:
+        - name: boot-admin-client-config
+          configMap:
+            name: boot-admin-client-config
+      containers:
+        - name: genai-service
+          volumeMounts:
+            - name: boot-admin-client-config
+              mountPath: /config
+              readOnly: true

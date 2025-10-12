@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: boot-admin-client-config
+  namespace: petclinic
+data:
+  application.yml: |
+    spring:
+      boot:
+        admin:
+          client:
+            enabled: true
+            url: http://admin-server.petclinic:9090
