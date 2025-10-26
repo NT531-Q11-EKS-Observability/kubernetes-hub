@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: petclinic
+
+commonLabels:
+  app.kubernetes.io/part-of: petclinic
+  app.kubernetes.io/managed-by: kustomize
+  environment: eks
+
+resources:
+  - ../../base
+
+patches:
+  - path: config-server-patch.yaml
+  - path: genai-secret-patch.yaml
+  - path: ingress-patch.yaml
+  - path: enable-admin-client.yaml
+  - path: init-wait-config.yaml
+  - path: init-wait-admin.yaml
+  - path: prefer-dns.yaml

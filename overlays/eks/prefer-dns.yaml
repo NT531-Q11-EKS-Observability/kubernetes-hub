@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      containers:
+        - name: api-gateway
+          env:
+            - name: SPRING_CLOUD_DISCOVERY_CLIENT_PREFER_IP_ADDRESS
+              value: "false"

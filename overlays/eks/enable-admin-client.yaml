@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      containers:
+        - name: api-gateway
+          env:
+            - name: SPRING_BOOT_ADMIN_CLIENT_ENABLED
+              value: "true"
+            - name: SPRING_BOOT_ADMIN_CLIENT_URL
+              value: "http://admin-server.petclinic:9090"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customers-service
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      containers:
+        - name: customers-service
+          env:
+            - name: SPRING_BOOT_ADMIN_CLIENT_ENABLED
+              value: "true"
+            - name: SPRING_BOOT_ADMIN_CLIENT_URL
+              value: "http://admin-server.petclinic:9090"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visits-service
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      containers:
+        - name: visits-service
+          env:
+            - name: SPRING_BOOT_ADMIN_CLIENT_ENABLED
+              value: "true"
+            - name: SPRING_BOOT_ADMIN_CLIENT_URL
+              value: "http://admin-server.petclinic:9090"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vets-service
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      containers:
+        - name: vets-service
+          env:
+            - name: SPRING_BOOT_ADMIN_CLIENT_ENABLED
+              value: "true"
+            - name: SPRING_BOOT_ADMIN_CLIENT_URL
+              value: "http://admin-server.petclinic:9090"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: genai-service
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      containers:
+        - name: genai-service
+          env:
+            - name: SPRING_BOOT_ADMIN_CLIENT_ENABLED
+              value: "true"
+            - name: SPRING_BOOT_ADMIN_CLIENT_URL
+              value: "http://admin-server.petclinic:9090"

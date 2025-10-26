@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+  namespace: petclinic
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: wait-for-config
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |
+              until nc -z config-server.petclinic 8888; do
+                echo "⏳ Waiting for config-server..."
+                sleep 3
+              done
+          resources:
+            requests:
+              cpu: 5m
+              memory: 8Mi
