@@ -12,7 +12,7 @@ resources:
 
 patches:
   - path: config-server-patch.yaml
-  - path: genai-secret-patch.yaml
+  # - path: genai-secret-patch.yaml
   - path: ingress-patch.yaml
   - path: enable-admin-client.yaml
   - path: init-wait-config.yaml

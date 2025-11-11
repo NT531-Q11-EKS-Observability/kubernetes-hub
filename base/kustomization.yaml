@@ -11,7 +11,7 @@ resources:
   - deployments/customers-service.yaml
   - deployments/visits-service.yaml
   - deployments/vets-service.yaml
-  - deployments/genai-service.yaml
+  # - deployments/genai-service.yaml
 
   # --- Services ---
   - services/config-server.yaml
@@ -27,3 +27,11 @@ resources:
   - nginx-ingress.yaml
   - genai-secret.yaml
   - configmaps/boot-admin-client.yaml
+
+  # --- HPA ---
+  - hpa/hpa-all.yaml
+
+  # Topology Spread Constraint 
+  - tsc/tsc-scenario1.yaml
+  - tsc/tsc-scenario2.yaml
+  - tsc/tsc-scenario3.yaml
