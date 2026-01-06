@@ -30,8 +30,3 @@ resources:
 
   # --- HPA ---
   - hpa/hpa-all.yaml
-
-  # Topology Spread Constraint 
-  - tsc/tsc-scenario1.yaml
-  - tsc/tsc-scenario2.yaml
-  - tsc/tsc-scenario3.yaml

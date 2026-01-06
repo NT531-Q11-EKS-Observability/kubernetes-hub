@@ -44,10 +44,6 @@ kubectl apply -k "${OVERLAY_PATH}"
 echo "[5/6] ⚙️  Áp dụng cấu hình Auto Scaling (HPA)..."
 kubectl apply -f "${BASE_PATH}/hpa/hpa-all.yaml"
 
-# Bước 5. Áp dụng Topology Spread Constraints (TSC)
-echo "[6/6] 🧩 Áp dụng cấu hình Topology Spread Constraints (TSC)..."
-kubectl apply -f "${BASE_PATH}/tsc/"
-
 echo ""
 echo "=============================================================="
 echo "✅ Danh sách Pods hiện tại:"

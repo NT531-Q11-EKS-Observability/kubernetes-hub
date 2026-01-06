@@ -11,10 +11,29 @@ resources:
   - ../../base
 
 patches:
+  # Patch cấu hình hệ thống
   - path: config-server-patch.yaml
-  # - path: genai-secret-patch.yaml
   - path: ingress-patch.yaml
   - path: enable-admin-client.yaml
   - path: init-wait-config.yaml
   - path: init-wait-admin.yaml
   - path: prefer-dns.yaml
+
+  # ===============================
+  # High Availability patches
+  # ===============================
+
+  # 1️⃣ Topology Spread Constraints
+  - target:
+      kind: Deployment
+    path: tsc-patch.yaml
+
+  # 2️⃣ Replicas = 6
+  - target:
+      kind: Deployment
+    path: replicas-patch.yaml
+
+  # 3️⃣ Pod Disruption Budget
+  - target:
+      kind: PodDisruptionBudget
+    path: pdb-patch.yaml
