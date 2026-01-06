@@ -5,24 +5,6 @@ It includes services such as `api-gateway`, `config-server`, `discovery-server`,
 
 ---
 
-## Project Structure
-
-```
-k8s-petclinic-final/
-├── base/                        # Common Kubernetes resources
-│   ├── configmaps/
-│   │   └── boot-admin-client.yaml
-│   ├── deployments/             # All Spring Boot microservices
-│   └── services/                # Kubernetes Services & Ingress
-├── overlays/
-│   ├── minikube/                # Local deployment overlay
-│   │   ├── apply-minikube.sh    # Automated deploy script
-│   │   ├── patches/*.yaml       # Probe, wait, and admin configs
-│   └── eks/                     # (Reserved for AWS EKS deployment)
-```
-
----
-
 ## Deploy on Minikube
 
 ### 1. Start Minikube
